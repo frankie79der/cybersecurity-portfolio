@@ -55,4 +55,13 @@ Coming soon:
 - Home lab assessments
 - Security automation scripts
 
+| Module | Status | 
+|---------|--------| 
+| Access Control | ✅ Completed | 
+| Authentication | ✅ Completed | 
+| JWT | ✅ Completed | 
+| Path Traversal | ✅ Completed| 
+| File Upload | ✅ Completed | 
+| OS Command Injection | ✅ Completed |
+| SQL Injection | 🚧 In Progress |
 
