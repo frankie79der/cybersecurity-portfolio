@@ -2,197 +2,422 @@
 
 ## About Me
 
-IT professional with a Computer Science background currently transitioning into cybersecurity, with a strong focus on offensive security, Active Directory, network analysis, and web application security.
+IT professional with a Computer Science background transitioning into cybersecurity, with a strong focus on **offensive security, Active Directory, network penetration testing, web application security, and protocol analysis**.
 
-My approach is strongly hands-on.
+My approach to cybersecurity is strongly hands-on.
 
-Rather than studying security only at the theoretical level, I build controlled lab environments, reproduce attack paths, analyze authentication protocols, capture network traffic, test vulnerable applications, and document the entire process.
+Rather than studying security only at the theoretical level, I build controlled lab environments, reproduce attack paths, analyze authentication protocols, inspect network traffic, test intentionally vulnerable systems, and document the complete process.
 
-This GitHub portfolio documents that progression.
+This repository documents my progression from Linux and networking fundamentals to increasingly advanced offensive-security topics involving **Active Directory, Kerberos, SMB, exploitation, packet analysis, and web application security**.
 
 ---
 
-## Featured Technical Areas
+# Featured Projects
 
-### Active Directory & Windows Security
+## 🔥 Incident 14 — Active Directory Kerberoasting
 
-Hands-on work with a multi-VM Active Directory environment including:
+A complete Kerberoasting scenario performed inside my controlled Active Directory lab.
 
-- Windows Server Domain Controller
-- Windows domain clients
+The exercise begins with access as a standard domain user and follows the attack path through service-account discovery and Kerberos ticket analysis.
+
+### Topics Covered
+
+- Active Directory enumeration
+- Domain user discovery
+- Service Principal Name (SPN) enumeration
+- Service-account identification
+- Kerberos TGS requests
+- Impacket `GetUserSPNs`
+- TGS-REQ / TGS-REP analysis
+- Wireshark packet inspection
+- Kerberos ticket extraction
+- Offline password testing with Hashcat
+- Credential validation inside the lab
+- Kerberos time-synchronization requirements
+
+### Technologies
+
+**Kali Linux · Windows Server · Active Directory · Kerberos · Impacket · Wireshark · Hashcat**
+
+---
+
+## 🔐 Incident 12 — Kerberos Authentication Analysis
+
+Captured and analyzed the complete Kerberos authentication process inside a Windows Active Directory environment.
+
+The objective was to connect Kerberos theory with the actual packets exchanged between a Windows domain client and the Domain Controller.
+
+### Authentication Flow Analyzed
+
+1. AS-REQ
+2. PREAUTH_REQUIRED
+3. AS-REQ with pre-authentication
+4. AS-REP
+5. Ticket Granting Ticket creation
+6. TGS-REQ
+7. TGS-REP
+8. Service Ticket usage
+
+### Tools Used
+
+- Wireshark
+- Windows Server
+- Active Directory
+- `klist`
+- Windows domain utilities
+
+This lab helped connect Windows authentication behavior with packet-level network analysis.
+
+---
+
+## 🏢 Active Directory Security Labs
+
+Several incidents in this portfolio focus on building, understanding, enumerating, and testing a Windows Active Directory environment.
+
+### Topics Covered
+
 - Active Directory Domain Services
+- Domain Controllers
+- Domain users
+- Domain groups
 - DNS
 - LDAP
 - Kerberos
 - SMB
-- Domain users and groups
-- Service Principal Names (SPNs)
+- Service Principal Names
 - Domain enumeration
-- Authentication analysis
-
-I use Kali Linux as the offensive-security workstation for enumeration and attack simulation inside the lab.
-
----
-
-### Kerberos & Kerberoasting
-
-Practical Active Directory authentication analysis including:
-
-- AS-REQ / AS-REP
-- Kerberos pre-authentication
-- Ticket Granting Tickets (TGT)
-- TGS-REQ / TGS-REP
-- Service Tickets
-- SPN discovery
-- Kerberoasting
-- Offline password testing
-
-Tools used include:
-
-- Wireshark
-- Impacket
-- Hashcat
-- Windows native tools such as `klist`, `setspn`, `whoami`, `net user`, `net group`, and `nltest`
-
-Several documented labs follow the full attack and authentication flow from domain-user access through SPN discovery, service-ticket requests, packet analysis, and controlled offline credential testing.
-
----
-
-### SMB & Network Traffic Analysis
-
-Hands-on packet analysis using Wireshark, including:
-
-- TCP connection establishment
-- SMB2 Negotiate
-- Session Setup
-- Tree Connect
-- File Create
-- Read / Write operations
+- Group membership
 - Authentication behavior
-- TCP/445 analysis
+- Domain Controller discovery
 
-The goal is not only to use security tools, but to understand what is happening on the network while the tools are running.
+### Windows Commands Used
 
----
+- `whoami`
+- `whoami /user`
+- `whoami /groups`
+- `hostname`
+- `ipconfig`
+- `net user /domain`
+- `net group /domain`
+- `net group "Domain Admins" /domain`
+- `net group "Enterprise Admins" /domain`
+- `nltest`
+- `klist`
+- `setspn`
 
-### Web Application Security
-
-Hands-on training using Burp Suite and PortSwigger Web Security Academy.
-
-Topics studied and practiced include:
-
-- SQL Injection
-- Authentication vulnerabilities
-- Access Control vulnerabilities
-- JWT security
-- Path Traversal
-- File Upload vulnerabilities
-- OS Command Injection
-- Cross-Site Scripting (XSS)
-- API Security
-- Server-Side vulnerabilities
+The objective is not simply to memorize commands, but to understand how Active Directory components interact during authentication, discovery, and offensive-security testing.
 
 ---
 
-### Linux & Offensive Security
+## 🌐 Incident 11 — Active Directory DNS Investigation
 
-Practical Linux and Kali Linux work covering:
+Investigated how DNS operates inside an Active Directory environment and how domain systems locate critical infrastructure.
 
-- Linux command-line fundamentals
-- Filesystem navigation
-- System information and processes
-- Network inspection
+### Topics Covered
+
+- DNS A records
+- DNS SRV records
+- Domain Controller discovery
+- LDAP service discovery
+- Active Directory DNS integration
+- DNS relationships with Kerberos and LDAP
+
+Example query used during the investigation:
+
+```bash
+dig @192.168.42.40 _ldap._tcp.dc._msdcs.redteamlab.local SRV
+```
+
+The lab demonstrates how DNS discovery becomes part of the broader Active Directory enumeration and authentication process.
+
+---
+
+# Cybersecurity Incident Lab
+
+The **Cybersecurity Incident Lab** is a chronological series of hands-on investigations documenting my technical progression.
+
+The incident numbering is intentional.
+
+Instead of creating isolated demonstrations, I preserve the learning path from foundational networking concepts toward increasingly complex Active Directory and offensive-security scenarios.
+
+Current structure includes:
+
+```text
+Cybersecurity-Incident-Lab
+│
+├── Incident-1
+├── Incident-2
+├── Incident-3
+├── Incident-4
+├── Incident-5
+├── Incident-6
+├── Incident-7
+├── Incident-8
+├── Incident-9
+├── Incident-10 — Active Directory
+├── Incident-11 — DNS Investigation
+├── Incident-12 — Kerberos
+├── Incident-13 — Active Directory
+├── Incident-14 — Kerberoasting
+└── Special Incident
+```
+
+The incidents document combinations of:
+
+- Lab objectives
+- Network configuration
+- Investigation methodology
+- Commands used
+- Security tools
+- Screenshots
+- Packet captures
+- Findings
+- Technical explanations
+- Troubleshooting
+- Lessons learned
+
+---
+
+# Network Penetration Testing
+
+The `Network-Pentesting` section contains the majority of my infrastructure and offensive-security work.
+
+```text
+Network-Pentesting
+│
+├── Cybersecurity-Incident-Lab
+│
+├── Exploitation-Labs
+│   ├── Credential-Attacks
+│   ├── Metasploit-Reverse-Shell
+│   ├── Metasploitable2-Blind-Assessment
+│   ├── Post-Exploitation
+│   ├── Vulnerability-Assessment
+│   └── Metasploitable2-vsftpd
+│
+├── MITM-Lab
+│
+└── Virtual-Lab-Environment
+```
+
+Topics explored include:
+
+- Network enumeration
+- Host discovery
 - Service enumeration
-- Security tooling
-- Vulnerable service analysis
+- Vulnerability assessment
+- Authentication
+- Credential attacks
+- Exploitation
+- Reverse shells
+- Post-exploitation
+- Man-in-the-Middle concepts
+- Vulnerable services
+- Active Directory
+- Kerberos
+- SMB
+- Network traffic analysis
 
-Training environments include intentionally vulnerable systems such as Metasploitable.
+---
 
-Tools used include:
+# Exploitation Labs
+
+The `Exploitation-Labs` section contains controlled exercises performed against intentionally vulnerable systems.
+
+## Areas Covered
+
+- Credential attacks
+- Vulnerability assessment
+- Service enumeration
+- Metasploit exploitation
+- Reverse shells
+- Post-exploitation
+- Metasploitable 2
+- FTP / vsftpd analysis
+- Blind assessment methodology
+
+## Tools Used
 
 - Kali Linux
 - Nmap
 - Metasploit
-- Burp Suite
+- Linux command-line tools
 - Wireshark
-- Impacket
-- Hashcat
-- Python
-- Linux CLI tools
+
+The goal of these labs is to understand the complete process from **discovery to exploitation**, rather than simply executing individual tools.
 
 ---
 
-## Selected Projects
+# Active Directory Lab Environment
 
-### Active Directory Offensive Security Lab
+My Windows security work is performed inside a personally controlled virtual environment.
 
-Built and maintained a multi-system Active Directory lab for studying domain architecture, authentication, enumeration, and offensive-security techniques.
+The lab includes a Windows Server Domain Controller, Windows domain clients, and Kali Linux.
 
-Key areas include:
+```text
+                     Active Directory Lab
 
-- Domain Controller discovery
-- DNS SRV queries
-- Active Directory enumeration
-- User and group discovery
-- SPN enumeration
-- Kerberos authentication
-- SMB authentication
-- Packet-level analysis
+                          DC1
+                    Windows Server
+                    192.168.42.40
+
+                   Active Directory
+                         DNS
+                       Kerberos
+                        LDAP
+
+                          │
+                          │
+                  redteamlab.local
+                          │
+              ┌───────────┼───────────┐
+              │           │           │
+           BOB-PC      ALICE-PC      KALI
+          Windows 10   Windows 10   Linux
+                                  192.168.42.20
+
+                                   │
+                                   │
+                          Offensive Security
+                             Workstation
+```
+
+The lab is used to study how offensive-security techniques interact with actual Windows domain services.
 
 ---
 
-### Kerberos Traffic Analysis
+# Kerberos
 
-Captured and analyzed complete Kerberos authentication sequences using Wireshark.
+Kerberos is one of the major areas documented in the Active Directory labs.
 
-Documented:
+The authentication process analyzed includes:
 
+```text
+User
+ │
+ │ AS-REQ
+ ▼
+Domain Controller / KDC
+ │
+ │ AS-REP
+ │ + TGT
+ ▼
+User
+ │
+ │ TGS-REQ
+ ▼
+Domain Controller / KDC
+ │
+ │ TGS-REP
+ │ + Service Ticket
+ ▼
+User
+ │
+ │ Service Ticket
+ ▼
+Target Service
+```
+
+Hands-on work includes:
+
+- Ticket Granting Tickets
+- Service Tickets
+- Kerberos pre-authentication
 - AS-REQ
-- PREAUTH_REQUIRED
-- AS-REQ with pre-authentication
 - AS-REP
 - TGS-REQ
 - TGS-REP
+- SPNs
+- Kerberoasting
+- Wireshark analysis
+- `klist`
+- Impacket
+- Hashcat
 
-This project connects Windows authentication behavior with the actual packets exchanged between domain clients and the Domain Controller.
-
----
-
-### Kerberoasting Lab
-
-Created a controlled Active Directory Kerberoasting scenario.
-
-The lab includes:
-
-1. Starting with standard domain-user credentials
-2. Enumerating Service Principal Names
-3. Identifying a service account
-4. Requesting a Kerberos service ticket
-5. Capturing the TGS exchange
-6. Extracting Kerberos material for offline analysis
-7. Performing controlled password testing
-8. Documenting the complete attack path
+The goal is to understand both the attack technique and the authentication mechanism behind it.
 
 ---
 
-### SMB Packet Analysis
+# SMB & Network Traffic Analysis
 
-Captured and analyzed SMB authentication and file-access traffic.
+Wireshark is used throughout the portfolio to analyze network activity at the protocol level.
 
-Topics include:
+SMB analysis includes traffic over TCP port 445 and the sequence of operations involved in accessing Windows network resources.
 
-- TCP/445
+Typical SMB flow:
+
+```text
+TCP Three-Way Handshake
+        │
+        ▼
+SMB2 Negotiate
+        │
+        ▼
+Session Setup
+        │
+        ▼
+Tree Connect
+        │
+        ▼
+Create / Open
+        │
+        ▼
+Read / Write
+        │
+        ▼
+Close
+```
+
+Topics investigated include:
+
+- TCP connections
 - SMB negotiation
-- Session authentication
+- Authentication
+- Session establishment
 - Share access
-- File operations
-- Packet sequencing
+- File creation
+- File reading
+- File writing
+- Connection termination
 
 ---
 
-### PortSwigger Web Security Labs
+# Protocol Analysis
 
-Practical web application security exercises using Burp Suite and PortSwigger Web Security Academy.
+One of my main learning objectives is understanding what happens on the network while security tools and operating systems communicate.
+
+Protocols analyzed throughout the labs include:
+
+- TCP/IP
+- DNS
+- HTTP
+- HTTPS
+- SMB
+- SMB2
+- Kerberos
+- LDAP
+
+Wireshark is used to connect security concepts with actual network traffic.
+
+---
+
+# Web Application Security
+
+The `PortSwigger` section documents hands-on web application security training using **Burp Suite** and the **PortSwigger Web Security Academy**.
+
+```text
+PortSwigger
+│
+├── Access-Control
+├── Authentication
+├── File-Upload
+├── JWT
+├── OS-Command-Injection
+├── Path-Traversal
+└── SQL-Injection
+```
+
+## Training Progress
 
 | Module | Status |
 |---|---|
@@ -204,93 +429,324 @@ Practical web application security exercises using Burp Suite and PortSwigger We
 | OS Command Injection | ✅ Completed |
 | SQL Injection | 🚧 In Progress |
 
----
+Additional areas of study include:
 
-## Tools & Technologies
+- Cross-Site Scripting
+- API Security
+- Server-Side vulnerabilities
+- Authentication weaknesses
+- Authorization vulnerabilities
 
-**Offensive Security**
+## Tools
 
-Kali Linux · Burp Suite · Impacket · Metasploit · Hashcat · Nmap
+- Burp Suite
+- PortSwigger Web Security Academy
+- Browser Developer Tools
+- Kali Linux
 
-**Network Analysis**
-
-Wireshark · TCP/IP · DNS · SMB · Kerberos · LDAP
-
-**Active Directory**
-
-AD DS · Domain Controllers · DNS · Kerberos · SPNs · Domain Users & Groups · SMB
-
-**Web Security**
-
-Burp Suite · PortSwigger Web Security Academy · SQL Injection · Authentication Testing · Access Control Testing
-
-**Systems**
-
-Windows · Windows Server · Linux · VirtualBox
-
-**Scripting**
-
-Python · Bash / Linux CLI
+The focus is on understanding how web vulnerabilities work, how requests and responses can be manipulated, and how application behavior changes during security testing.
 
 ---
 
-## How I Work
+# Linux Fundamentals
 
-My objective is to understand security mechanisms at multiple levels:
+The `Linux Terminal X Beginners` section documents my Linux command-line progression from the fundamentals onward.
 
-**Tool → Protocol → System → Attack Path**
+Topics include:
 
-For example, when studying Kerberos I do not stop at running a tool.
+- Filesystem navigation
+- Files and directories
+- User identity
+- System information
+- Processes
+- Memory
+- Permissions
+- Networking
+- Command-line utilities
+- Linux administration fundamentals
 
-I also analyze:
-
-- what request the tool sends
-- which system receives it
-- which protocol is being used
-- what authentication ticket is created
-- what can be observed in Wireshark
-- why the attack technique works
-- what assumptions and prerequisites are required
-
-This portfolio therefore contains both practical exercises and technical explanations.
-
----
-
-## Portfolio Structure
-
-Many repositories are organized chronologically.
-
-This is intentional.
-
-They document the progression from fundamentals toward increasingly complex offensive-security topics, including:
-
-**Linux → Networking → Web Security → Vulnerable Systems → Active Directory → Kerberos → SMB → Packet Analysis → Kerberoasting**
-
-Selected repositories represent the strongest projects, while the remaining material documents the broader learning path.
+Linux skills developed here are applied throughout the offensive-security labs using Kali Linux.
 
 ---
 
-## Lab Ethics
+# MiniConnect
 
-All security testing documented in this portfolio was performed in:
+`MiniConnect` is a Python application project included in the portfolio.
 
-- Personally controlled environments
-- Intentionally vulnerable systems
-- Training platforms
-- Authorized cybersecurity laboratories
+```text
+MiniConnect
+│
+├── screenshots
+├── templates
+├── README.md
+├── app.py
+├── init_db.py
+└── miniconnect.db
+```
 
-No techniques documented here were performed against systems without authorization.
+The project demonstrates experience beyond security tooling, including:
+
+- Python
+- Application structure
+- Database interaction
+- SQLite
+- Templates
+- Application logic
+- Troubleshooting
+- Technical documentation
 
 ---
 
-## Current Focus
+# Tools & Technologies
 
-Current areas of continued development:
+## Offensive Security
+
+- Kali Linux
+- Nmap
+- Burp Suite
+- Impacket
+- Metasploit
+- Hashcat
+
+## Active Directory
+
+- Windows Server
+- Active Directory Domain Services
+- Domain Controllers
+- Kerberos
+- LDAP
+- DNS
+- SMB
+- Service Principal Names
+- Domain users
+- Domain groups
+
+## Network Analysis
+
+- Wireshark
+- TCP/IP
+- DNS
+- HTTP / HTTPS
+- SMB
+- Kerberos
+- LDAP
+
+## Web Application Security
+
+- Burp Suite
+- PortSwigger Web Security Academy
+- SQL Injection
+- Authentication Testing
+- Access Control Testing
+- JWT
+- Path Traversal
+- File Upload vulnerabilities
+- OS Command Injection
+
+## Systems
+
+- Windows
+- Windows Server
+- Kali Linux
+- Linux
+- VirtualBox
+
+## Development
+
+- Python
+- Bash
+- Linux CLI
+- SQLite
+
+---
+
+# How I Approach Cybersecurity
+
+My objective is not simply to learn how to execute security tools.
+
+I want to understand the complete chain behind them.
+
+```text
+Tool
+  │
+  ▼
+Command
+  │
+  ▼
+Protocol
+  │
+  ▼
+Authentication
+  │
+  ▼
+Operating System / Service
+  │
+  ▼
+Network Traffic
+  │
+  ▼
+Attack Path
+```
+
+For example, when studying Kerberoasting, the objective is not simply to execute `GetUserSPNs`.
+
+The complete investigation involves understanding:
+
+- Why a Service Principal Name exists
+- How service accounts interact with Kerberos
+- Why a domain user can request certain service tickets
+- How the Domain Controller processes the request
+- What happens during TGS-REQ and TGS-REP
+- What can be observed in Wireshark
+- Why offline password analysis becomes possible
+- What prerequisites the technique requires
+- How DNS, LDAP, Kerberos, Active Directory, users, and services interact
+
+This methodology is applied throughout the portfolio.
+
+---
+
+# Learning Progression
+
+This repository intentionally preserves the chronological progression of my cybersecurity studies and hands-on work.
+
+```text
+Linux Fundamentals
+        │
+        ▼
+Networking
+        │
+        ▼
+Network Enumeration
+        │
+        ▼
+Vulnerability Assessment
+        │
+        ▼
+Web Application Security
+        │
+        ▼
+Vulnerable Systems
+        │
+        ▼
+Exploitation
+        │
+        ▼
+Windows / Active Directory
+        │
+        ▼
+DNS
+        │
+        ▼
+Kerberos
+        │
+        ▼
+SMB
+        │
+        ▼
+Wireshark Packet Analysis
+        │
+        ▼
+Kerberoasting
+```
+
+Older labs remain in the repository because they document the progression that led to the more advanced projects.
+
+The objective is to show not only what I know today, but how that knowledge was built through practical work.
+
+---
+
+# Current Focus
+
+My current areas of continued development include:
 
 - Active Directory offensive security
-- Kerberos attack techniques
 - Windows authentication
+- Kerberos attack techniques
+- Service-account security
 - Network protocol analysis
 - Web application penetration testing
 - Offensive-security methodology
 - Python security automation
+
+---
+
+# Repository Structure
+
+```text
+Cybersecurity-Portfolio
+│
+├── Linux Terminal X Beginners
+│   ├── screenshots
+│   └── README.md
+│
+├── MiniConnect
+│   ├── screenshots
+│   ├── templates
+│   ├── README.md
+│   ├── app.py
+│   ├── init_db.py
+│   └── miniconnect.db
+│
+├── Network-Pentesting
+│   │
+│   ├── Cybersecurity-Incident-Lab
+│   │   ├── Incident-1
+│   │   ├── Incident-2
+│   │   ├── Incident-3
+│   │   ├── Incident-4
+│   │   ├── Incident-5
+│   │   ├── Incident-6
+│   │   ├── Incident-7
+│   │   ├── Incident-8
+│   │   ├── Incident-9
+│   │   ├── Incident-10 — Active Directory
+│   │   ├── Incident-11 — DNS Investigation
+│   │   ├── Incident-12 — Kerberos
+│   │   ├── Incident-13 — Active Directory
+│   │   ├── Incident-14 — Kerberoasting
+│   │   └── Special Incident
+│   │
+│   ├── Exploitation-Labs
+│   │   ├── Credential-Attacks
+│   │   ├── Metasploit-Reverse-Shell
+│   │   ├── Metasploitable2-Blind-Assessment
+│   │   ├── Post-Exploitation
+│   │   ├── Vulnerability-Assessment
+│   │   └── Metasploitable2-vsftpd
+│   │
+│   ├── MITM-Lab
+│   └── Virtual-Lab-Environment
+│
+└── PortSwigger
+    ├── Access-Control
+    ├── Authentication
+    ├── File-Upload
+    ├── JWT
+    ├── OS-Command-Injection
+    ├── Path-Traversal
+    └── SQL-Injection
+```
+
+---
+
+# Lab Ethics
+
+All security testing documented in this repository was performed exclusively in:
+
+- Personally controlled lab environments
+- Intentionally vulnerable virtual machines
+- Authorized cybersecurity training platforms
+- Systems specifically configured for security testing
+
+No testing documented in this portfolio was performed against systems without authorization.
+
+---
+
+# Objective
+
+My goal is to transition my existing IT and Computer Science background into professional cybersecurity work, with particular interest in **offensive security and penetration testing**.
+
+This portfolio is intended to demonstrate practical ability rather than simply list technologies on a résumé.
+
+Every major topic documented here represents something I have **configured, tested, analyzed, captured, investigated, or documented in a controlled environment**.
