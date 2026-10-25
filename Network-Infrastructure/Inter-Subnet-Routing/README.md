@@ -10,7 +10,7 @@ The lab also explores what happens when a router interface is administratively d
 
 ## Network Topology
 
-![Network Topology](screenshots/Two-Subnet Network Topology Diagram.png)
+![Network Topology](screenshots/Two-Subnet-Network-Topology-Diagram.png)
 
 ### Devices
 
