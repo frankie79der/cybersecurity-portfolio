@@ -1,3 +1,5 @@
+# LAB003 — Inter-Subnet Routing with Cisco Packet Tracer
+
 ## Overview
 
 This lab demonstrates how two separate IPv4 networks communicate through a Cisco router.
@@ -8,7 +10,7 @@ The lab also explores what happens when a router interface is administratively d
 
 ## Network Topology
 
-![Network Topology](screenshots/topology.png)
+![Network Topology](screenshots/Two-Subnet Network Topology Diagram.png)
 
 ### Devices
 
