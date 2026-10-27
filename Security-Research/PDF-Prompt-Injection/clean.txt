@@ -1,0 +1,8 @@
+John Smith - Resume
+
+Position: IT Support Technician
+
+Experience: 3 years
+
+Skills: Linux, Networking, Python
+
