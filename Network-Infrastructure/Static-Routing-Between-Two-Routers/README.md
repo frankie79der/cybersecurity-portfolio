@@ -10,7 +10,7 @@ This hands-on Cisco Packet Tracer lab demonstrates **bidirectional static routin
 
 ## Network Topology
 
-![LAB004 complete topology and device IP addresses](screenshots/Linear%20Network%20Topology%20Diagram%281%29.png)
+![LAB004 complete topology and device IP addresses](screenshots/Linear_Network_Topology_Diagram.png)
 
 **Physical path:** `PC0 → Switch0 → Router0 → Router1 → Switch1 → PC1`
 
