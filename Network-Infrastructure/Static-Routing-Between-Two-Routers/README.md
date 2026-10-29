@@ -90,7 +90,7 @@ Router(config-if)# no shutdown
 Router(config-if)# end
 ```
 
-![Router1 transit and LAN interfaces configured](screenshots/003-router-config2%281%29.png)
+![Router1 transit and LAN interfaces configured](screenshots/003-router-config2.png)
 
 ![Transit /30 and Router1 LAN /24 interface summary](screenshots/x-tra-004.png)
 
