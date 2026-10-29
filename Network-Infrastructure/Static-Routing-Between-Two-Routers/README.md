@@ -37,7 +37,7 @@ The Layer 2 switches do not need management IP addresses to forward Ethernet fra
 
 Equipment: two PC-PT hosts, two Cisco 2960-24TT switches, and two Cisco 2911 routers. The topology was created using **File → New**, not by modifying a previous lab.
 
-![Initial Packet Tracer topology before router ports were enabled](screenshots/001-first-config%282%29.png)
+![Initial Packet Tracer topology before router ports were enabled](screenshots/001-first-config.png)
 
 Connections used:
 
@@ -114,7 +114,7 @@ Subnet Mask:     255.255.255.0
 Default Gateway: 192.168.2.1
 ```
 
-![Correct PC0 and PC1 IPv4 configuration and default gateways](screenshots/004-PCs-config%281%29.png)
+![Correct PC0 and PC1 IPv4 configuration and default gateways](screenshots/004-PCs-config.png)
 
 The **default gateway** is the local router interface to which a PC sends IPv4 traffic for remote networks. It is **not** the `10.0.0.x` transit address.
 
@@ -150,7 +150,7 @@ Expected and observed static route:
 S 192.168.2.0/24 [1/0] via 10.0.0.2
 ```
 
-![Router0 routing table showing the static route to LAN B](screenshots/004-router0-config%281%29.png)
+![Router0 routing table showing the static route to LAN B](screenshots/004-router0-config.png)
 
 ![How Router0 uses Router1 as the next hop](screenshots/x-tra-006.png)
 
@@ -169,7 +169,7 @@ Expected and observed static route:
 S 192.168.1.0/24 [1/0] via 10.0.0.1
 ```
 
-![Router1 routing table showing the return static route to LAN A](screenshots/005-router1-config%281%29.png)
+![Router1 routing table showing the return static route to LAN A](screenshots/005-router1-config.png)
 
 ![Bidirectional static routes between LAN A and LAN B](screenshots/x-tra-007.png)
 
@@ -185,7 +185,7 @@ ping 192.168.2.20
 
 First run: **2 replies / 4 attempts (50% loss)**. Second run: **4 replies / 4 attempts (0% loss)**, with `TTL=126` in successful replies.
 
-![First ping with initial timeouts, followed by a successful 0 percent loss ping](screenshots/006-first-test-ping%282%29.png)
+![First ping with initial timeouts, followed by a successful 0 percent loss ping](screenshots/006-first-test-ping.png)
 
 The early timeouts are consistent with initial ARP resolution in Packet Tracer, but the ping output alone does not conclusively identify their cause. The second run demonstrates working two-way IP reachability in the final tested setup.
 
@@ -208,7 +208,7 @@ Observed result:
 Trace complete.
 ```
 
-![PC0 traceroute showing both routers and PC1](screenshots/007-second-test-tracert%281%29.png)
+![PC0 traceroute showing both routers and PC1](screenshots/007-second-test-tracert.png)
 
 The traceroute shows **two routers**, followed by the destination PC. The Layer 2 switches do not appear as IP router hops.
 
@@ -230,12 +230,12 @@ All links below point to files in this project's `screenshots/` directory.
 | Initial topology | [Initial topology](screenshots/001-first-config%282%29.png) |
 | Router0 interface activation | [Router0 interface configuration](screenshots/002-router-config.png) |
 | Router1 interface configuration | [Router1 interface configuration](screenshots/003-router-config2%281%29.png) |
-| Both PC configurations | [PC IP configuration](screenshots/004-PCs-config%281%29.png) |
-| Router0 static route | [Router0 routing table](screenshots/004-router0-config%281%29.png) |
-| Router1 static route | [Router1 routing table](screenshots/005-router1-config%281%29.png) |
-| Ping verification | [Ping: initial and repeat](screenshots/006-first-test-ping%282%29.png) |
-| Traceroute | [Trace through two routers](screenshots/007-second-test-tracert%281%29.png) |
-| Complete IP topology | [IP topology diagram](screenshots/Linear%20Network%20Topology%20Diagram%281%29.png) |
+| Both PC configurations | [PC IP configuration](screenshots/004-PCs-config.png) |
+| Router0 static route | [Router0 routing table](screenshots/004-router0-config.png) |
+| Router1 static route | [Router1 routing table](screenshots/005-router1-config.png) |
+| Ping verification | [Ping: initial and repeat](screenshots/006-first-test-ping.png) |
+| Traceroute | [Trace through two routers](screenshots/007-second-test-tracert.png) |
+| Complete IP topology | [IP topology diagram](screenshots/Linear_Network_Topology_Diagram_.png) |
 | Simplified topology | [Diagram 1](screenshots/x-tra-001.png) |
 | First connection diagram | [Diagram 2](screenshots/x-tra-002.png) |
 | Router cross-over connection | [Diagram 3](screenshots/x-tra-003.png) |
