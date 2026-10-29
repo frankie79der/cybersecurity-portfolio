@@ -1,4 +1,4 @@
-# LAB004 — Static Routing Between Two Routers
+# Static Routing Between Two Routers
 
 ## Overview
 
